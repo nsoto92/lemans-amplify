@@ -2,7 +2,7 @@
 export default function Home() {
   return (
     <div>
-      <h1>Leman's Auto Detailing</h1>
+      <h1>Lemans Auto Detailing</h1>
     </div>
   );
 }
