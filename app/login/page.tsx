@@ -1,8 +1,6 @@
-import LoginCard from '@/components/Login';
+import LoginCard from '@/components/Login/Login';
 export default function Login() {
   return (
-    <div>
-      <LoginCard />
-    </div>
+    <LoginCard />
   );
 }

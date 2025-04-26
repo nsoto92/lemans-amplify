@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material/styles';
 
 // From zmo Digital Design Guidelines
 const corePallete = {
-  mainColor: '#F88644',
+  mainColor: '#EBC072',
   darkGrey: '#4A4A4B',
   medGrey: '#A69F9F',
   lightGrey: '#EEE7E7',
