@@ -7,7 +7,7 @@ import {
 } from "@aws-amplify/ui-react";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
-import { AmplifyLoginConfig } from "@/components/LoginConfig";
+import { AmplifyLoginConfig } from "@/components/Login/LoginConfig";
 
 function CustomAuthenticator() {
   const { user } = useAuthenticator((context) => [context.user]);

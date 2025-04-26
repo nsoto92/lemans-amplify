@@ -11,23 +11,41 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import { Image } from '@aws-amplify/ui-react';
-import Logout from '@/components/Logout';
-import { useSessionDetails } from '@/hooks/useSessionDetails';
-
+import Tooltip from '@mui/material/Tooltip';
+import Avatar from '@mui/material/Avatar';
+import { useRouter } from 'next/navigation';
+import { signOut } from 'aws-amplify/auth';
+import { usePathname } from 'next/navigation';
+import MenuIcon from '@mui/icons-material/Menu';
 const pages = ['Servicios', 'Cotizados', 'Citas'];
-// const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
+  const router = useRouter();
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-  const { isLoggedIn } = useSessionDetails();
-  const [isLoggedInState, setIsLoggedInState] = React.useState(false);
+  const pathname = usePathname();
+  const isLoginPage = pathname === '/login';
+  const logout = async () => {
+    await signOut()
+    router.push("/login");
+  }
+
+  const settings = [
+    {
+      name: 'Logout',
+      onClick: () => {
+        logout();
+        handleCloseUserMenu();
+        handleCloseNavMenu();
+      }
+    }
+  ];
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  // const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-  //   setAnchorElUser(event.currentTarget);
-  // };
+  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElUser(event.currentTarget);
+  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -37,40 +55,13 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
-  React.useEffect(() => {
-    setIsLoggedInState(isLoggedIn);
-  }, [isLoggedIn]);
-
   return (
-    isLoggedIn &&
-      <AppBar position="static" sx={{ backgroundColor: '#000000' }}>
-        <Container maxWidth="xl">
-          <Toolbar disableGutters>
-            <Image
-              src="/logo.png"
-              alt="LeMans Logo"
-              height={60}
-              style={{ marginRight: '10px' }}
-            />
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="#app-bar-with-responsive-menu"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              LeMans
-            </Typography>
-
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+    !isLoginPage &&
+    <AppBar position="static" sx={{ backgroundColor: '#000000' }}>
+      <Container maxWidth="xl">
+        <Toolbar disableGutters sx={{ justifyContent: 'space-between' }}>
+          <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
+            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -79,6 +70,7 @@ function ResponsiveAppBar() {
                 onClick={handleOpenNavMenu}
                 color="inherit"
               >
+                <MenuIcon />
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -103,15 +95,19 @@ function ResponsiveAppBar() {
                 ))}
               </Menu>
             </Box>
+            <Image
+              src="/logo.png"
+              alt="LeMans Logo"
+              height={60}
+              style={{ marginRight: '10px' }}
+            />
             <Typography
-              variant="h5"
+              variant="h6"
               noWrap
               component="a"
-              href="#app-bar-with-responsive-menu"
+              href="/"
               sx={{
                 mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
                 fontFamily: 'monospace',
                 fontWeight: 700,
                 letterSpacing: '.3rem',
@@ -119,21 +115,24 @@ function ResponsiveAppBar() {
                 textDecoration: 'none',
               }}
             >
-              LOGO
+              LeMans
             </Typography>
-            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
-                <Button
-                  key={page}
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                  {page}
-                </Button>
-              ))}
-            </Box>
-            <Box sx={{ flexGrow: 0 }}>
-              {/* <Tooltip title="Open settings">
+          </Box>
+
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page) => (
+              <Button
+                key={page}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
+              >
+                {page}
+              </Button>
+            ))}
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
@@ -155,16 +154,15 @@ function ResponsiveAppBar() {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography sx={{ textAlign: 'center' }}>{setting}</Typography>
+                <MenuItem key={setting.name} onClick={setting.onClick}>
+                  <Typography sx={{ textAlign: 'center' }}>{setting.name}</Typography>
                 </MenuItem>
               ))}
-            </Menu> */}
-              <Logout />
-            </Box>
-          </Toolbar>
-        </Container>
-      </AppBar>
+            </Menu>
+          </Box>
+        </Toolbar>
+      </Container>
+    </AppBar>
   );
 }
 export default ResponsiveAppBar;
