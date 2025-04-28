@@ -17,7 +17,7 @@ import { useRouter } from 'next/navigation';
 import { signOut } from 'aws-amplify/auth';
 import { usePathname } from 'next/navigation';
 import MenuIcon from '@mui/icons-material/Menu';
-const pages = ['Servicios', 'Cotizados', 'Citas'];
+const pages = ['Servicios'];
 
 function ResponsiveAppBar() {
   const router = useRouter();

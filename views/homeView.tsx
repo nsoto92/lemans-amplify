@@ -38,12 +38,11 @@ export default function HomeView() {
         <Button
           size="small"
           href="/services"
-          variant="outlined"
+          variant="contained"
           sx={{ textAlign: 'center', width: 'fit-content', mt: 4 }}
         >
           {locale.home.button}
         </Button>
-       <LoadedMap />
       </Box>
     </PageView>
   );

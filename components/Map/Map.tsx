@@ -13,7 +13,7 @@ export default function Map() {
   return (
     <MapContainer
       center={center}
-      zoom={10}
+      zoom={9}
       scrollWheelZoom={false}
       style={{height: '400px', width: '90%'}}
     >
