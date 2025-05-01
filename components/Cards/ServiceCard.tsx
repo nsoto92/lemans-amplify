@@ -70,7 +70,7 @@ export default function ServiceCard({
             color="primary"
             sx={{ textTransform: 'none' }}
           >
-            Book Now!=
+            Book Now!
           </Button>
         </Link>
       </CardActions>
