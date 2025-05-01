@@ -1,5 +1,3 @@
-import { list } from 'aws-amplify/storage';
-
 export default {
     home: {
         title: "Le Mans Auto Detailing",
