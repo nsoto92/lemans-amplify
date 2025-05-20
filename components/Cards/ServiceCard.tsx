@@ -30,6 +30,7 @@ export default function ServiceCard({
     <Card
       sx={{
         width: 400,
+        height: 500,
         display: 'flex',
         flexDirection: 'column',
         boxShadow: 3,
@@ -47,7 +48,7 @@ export default function ServiceCard({
           }}
         />
       )}
-      <CardContent sx={{ flexGrow: 1 }}>
+      <CardContent sx={{ flexGrow: 1, overflow: 'scroll' }}>
         <Typography color="black" variant="h2" gutterBottom>
           {name}
         </Typography>
@@ -59,7 +60,7 @@ export default function ServiceCard({
       </CardContent>
       <Box sx={{ px: 2, pb: 1 }}>
         <Typography variant="subtitle1" color="primary">
-          Precio desde ${price.toFixed(2)}
+          Precios desde ${price.toFixed(2)}
         </Typography>
       </Box>
       <CardActions>

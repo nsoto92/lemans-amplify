@@ -43,6 +43,15 @@ export default function HomeView() {
         >
           {locale.home.button}
         </Button>
+        <Typography variant="h1" mt={4}>{locale.home.map.title}</Typography>
+        <Typography variant="h2">{locale.home.map.subtitle}</Typography>
+        <Typography
+          sx={{ textAlign: { xs: 'left', md: 'center' } }}
+          variant="body1"
+        >
+          {locale.home.map.description}
+        </Typography>
+       <LoadedMap />
       </Box>
     </PageView>
   );

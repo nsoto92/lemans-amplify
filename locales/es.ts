@@ -16,8 +16,9 @@ export default {
     services: {
         title: "Nuestros Servicios",
         subtitle: "Detalle profesional para todo tipo de vehículos.",
-        description: "En Le Mans Auto Detailing, ofrecemos una amplia gama de servicios diseñados para devolverle a tu auto su mejor apariencia, ¡sin que tengas que salir de casa!",
+        description: "En Le Mans Auto Detailing, ofrecemos una amplia gama de servicios diseñados para devolverle a tu auto su mejor apariencia, ¡Sin que tengas que salir de casa!",
         title2: "Servicios disponibles:",
+        vehicleSizes: "Vehículo:",
         list: [
             {
                 id: "1",

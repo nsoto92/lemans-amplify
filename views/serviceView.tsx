@@ -20,16 +20,7 @@ export default function ServiceView() {
         }}
         className={styles.content}
       >
-        <Typography variant="h1" mt={4}>{locale.home.map.title}</Typography>
-        <Typography variant="subtitle1">{locale.home.map.subtitle}</Typography>
-        <Typography
-          sx={{ textAlign: { xs: 'left', md: 'center' } }}
-          variant="body1"
-        >
-          {locale.home.map.description}
-        </Typography>
-       <LoadedMap />
-         <Typography variant="h1" mt={4}>{locale.services.title}</Typography>
+        <Typography variant="h1" mt={4}>{locale.services.title}</Typography>
         <Typography variant="subtitle1">{locale.services.subtitle}</Typography>
         <Typography
           sx={{ textAlign: { xs: 'left', md: 'center' } }}
@@ -40,7 +31,7 @@ export default function ServiceView() {
         <Typography variant="h2" mt={4}>{locale.services.title2}</Typography>
         <Box
           display="flex"
-          flexDirection={{xs: "column", md: "row"}}
+          flexDirection={{ xs: "column", md: "row" }}
           flexWrap="wrap"
           gap={2}
           justifyContent="center"
@@ -50,16 +41,16 @@ export default function ServiceView() {
             justifyContent: 'center',
           }}
         >
-        {locale.services.list.map((service) => (
-        <ServiceCard
-           key={service.id}
-           id={service.id}
-           name={service.name}
-           imageUrl={service.imageUrl}
-           perks={service.perks}
-           price={service.price}
-         />
-        ))}
+          {locale.services.list.map((service) => (
+            <ServiceCard
+              key={service.id}
+              id={service.id}
+              name={service.name}
+              imageUrl={service.imageUrl}
+              perks={service.perks}
+              price={service.price}
+            />
+          ))}
         </Box>
       </Box>
     </PageView>
