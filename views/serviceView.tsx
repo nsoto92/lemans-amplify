@@ -1,12 +1,29 @@
+"use client";
+
 import PageView from "@/views/pageView";
-import { Box, Button, Typography } from '@mui/material';
-import Image from "next/image";
+import { Box, Typography } from '@mui/material';
+import { useState } from 'react';
+import Modal from '@mui/material/Modal';
+import ServiceForm from '@/components/Forms/ServiceForm';
 
 import styles from "./home.module.css";
 import locale from "@/locales/es";
-import LoadedMap from "@/components/Map/LoadedMap";
 import ServiceCard from "@/components/Cards/ServiceCard";
+
 export default function ServiceView() {
+  const [open, setOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState(null);
+
+  const handleOpen = (service: any) => {
+    setSelectedService(service);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedService(null);
+  };
+
   return (
     <PageView>
       <Box
@@ -44,15 +61,15 @@ export default function ServiceView() {
           {locale.services.list.map((service) => (
             <ServiceCard
               key={service.id}
-              id={service.id}
-              name={service.name}
-              imageUrl={service.imageUrl}
-              perks={service.perks}
-              price={service.price}
+              service={service}
+              onBookNow={handleOpen}
             />
           ))}
         </Box>
       </Box>
+      <Modal open={open} onClose={handleClose}>
+        <ServiceForm service={selectedService} onClose={handleClose} />
+      </Modal>
     </PageView>
   );
 }

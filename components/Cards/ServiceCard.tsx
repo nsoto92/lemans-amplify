@@ -1,6 +1,5 @@
 // components/ServiceCard.tsx
 import React from 'react';
-import Link from 'next/link';
 import {
   Card,
   CardMedia,
@@ -19,13 +18,10 @@ export interface ServiceCardProps {
   imageUrl?: string;
 }
 
-export default function ServiceCard({
-  id,
-  name,
-  perks,
-  price,
-  imageUrl
-}: ServiceCardProps) {
+export default function ServiceCard({ service, onBookNow }: {
+  service: ServiceCardProps,
+  onBookNow: (service: ServiceCardProps) => void 
+}) {
   return (
     <Card
       sx={{
@@ -37,12 +33,12 @@ export default function ServiceCard({
         '&:hover': { boxShadow: 6 }
       }}
     >
-      {imageUrl && (
+      {service.imageUrl && (
         <CardMedia
           component="img"
           height="180"
-          image={imageUrl}
-          alt={name}
+          image={service.imageUrl}
+          alt={service.name}
           sx={{
             backgroundColor: 'white',
           }}
@@ -50,9 +46,9 @@ export default function ServiceCard({
       )}
       <CardContent sx={{ flexGrow: 1, overflow: 'scroll' }}>
         <Typography color="black" variant="h2" gutterBottom>
-          {name}
+          {service.name}
         </Typography>
-        {perks.map((point, idx) => (
+        {service.perks.map((point, idx) => (
           <Typography component="li" key={idx} variant="caption" color="black">
             {point}
           </Typography>
@@ -60,20 +56,19 @@ export default function ServiceCard({
       </CardContent>
       <Box sx={{ px: 2, pb: 1 }}>
         <Typography variant="subtitle1" color="primary">
-          Precios desde ${price.toFixed(2)}
+          Precios desde ${service.price.toFixed(2)}
         </Typography>
       </Box>
       <CardActions>
-        <Link href={`/book/${id}`} passHref>
-          <Button
-            fullWidth
-            variant="contained"
-            color="primary"
-            sx={{ textTransform: 'none' }}
-          >
-            Book Now
-          </Button>
-        </Link>
+        <Button
+          fullWidth
+          variant="contained"
+          color="primary"
+          sx={{ textTransform: 'none' }}
+          onClick={() => onBookNow(service)}
+        >
+          Book Now
+        </Button>
       </CardActions>
     </Card>
   );
