@@ -7,8 +7,11 @@ import {
   CardActions,
   Typography,
   Button,
-  Box
+  Box,
+  Chip,
+  Divider
 } from '@mui/material';
+import { Star, CheckCircle } from '@mui/icons-material';
 
 export interface ServiceCardProps {
   id: string;
@@ -25,51 +28,87 @@ export default function ServiceCard({ service, onBookNow }: {
   return (
     <Card
       sx={{
-        width: 400,
-        height: 500,
+        width: { xs: '100%', sm: 380 },
+        height: 'auto',
         display: 'flex',
         flexDirection: 'column',
-        boxShadow: 3,
-        '&:hover': { boxShadow: 6 }
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      {service.imageUrl && (
-        <CardMedia
-          component="img"
-          height="180"
-          image={service.imageUrl}
-          alt={service.name}
+      {/* Popular Badge */}
+      {service.id === '1' && (
+        <Chip
+          label="Most Popular"
+          color="secondary"
           sx={{
-            backgroundColor: 'white',
+            position: 'absolute',
+            top: 16,
+            right: 16,
+            zIndex: 1,
+            fontWeight: 600,
           }}
         />
       )}
-      <CardContent sx={{ flexGrow: 1, overflow: 'scroll' }}>
-        <Typography color="black" variant="h2" gutterBottom>
+
+      {service.imageUrl && (
+        <CardMedia
+          component="img"
+          height="200"
+          image={service.imageUrl}
+          alt={service.name}
+          sx={{
+            objectFit: 'cover',
+          }}
+        />
+      )}
+
+      <CardContent sx={{ flexGrow: 1, p: 3 }}>
+        <Typography variant="h4" gutterBottom sx={{ fontWeight: 600 }}>
           {service.name}
         </Typography>
-        {service.perks.map((point, idx) => (
-          <Typography component="li" key={idx} variant="caption" color="black">
-            {point}
+        
+        <Box sx={{ mb: 3 }}>
+          <Typography variant="h3" color="primary" sx={{ fontWeight: 700 }}>
+            ${service.price}
+            <Typography component="span" variant="body2" color="text.secondary">
+              /starting
+            </Typography>
           </Typography>
-        ))}
-      </CardContent>
-      <Box sx={{ px: 2, pb: 1 }}>
-        <Typography variant="subtitle1" color="primary">
-          Precios desde ${service.price.toFixed(2)}
+        </Box>
+
+        <Divider sx={{ mb: 2 }} />
+
+        <Typography variant="subtitle2" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+          What's Included:
         </Typography>
-      </Box>
-      <CardActions>
+        
+        <Box sx={{ mb: 3 }}>
+          {service.perks.map((perk, idx) => (
+            <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+              <CheckCircle sx={{ color: 'secondary.main', fontSize: 18, mr: 1 }} />
+              <Typography variant="body2" color="text.secondary">
+                {perk}
+              </Typography>
+            </Box>
+          ))}
+        </Box>
+      </CardContent>
+
+      <CardActions sx={{ p: 3, pt: 0 }}>
         <Button
           fullWidth
           variant="contained"
-          color="primary"
-          sx={{ textTransform: 'none' }}
+          size="large"
           onClick={() => onBookNow(service)}
+          sx={{
+            py: 1.5,
+            fontSize: '1.1rem',
+          }}
         >
           Book Now
         </Button>
       </CardActions>
     </Card>
   );
-};
+}

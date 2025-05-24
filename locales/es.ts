@@ -1,9 +1,31 @@
 export default {
+    appBar: {
+        pages: {
+            services: { name: 'Servicios', href: '/services' }
+        }
+    },
     home: {
         title: "Le Mans Auto Detailing",
         subtitle: "Auto Detailing Profesional a Domicilio",
         description: "En Le Mans Auto Detailing llevamos el servicio de auto detailing hasta tu puerta. Atendemos todo tipo de vehículos con la más alta calidad, cuidado y dedicación, para que tu auto luzca como nuevo, sin que tengas que salir de casa.",
         button: "Conoce nuestros servicios",
+        services: {
+            title: "¿Porqué elegir a Le Mans Auto Detailing?",
+            cards:{
+                home: {
+                    title: "Servicio Directo",
+                    description: "Servicios directamente a tu ubicación.",
+                },
+                premium: {
+                    title: "Alta Calidad",
+                    description: "Productos de la más alta calidad y técnicas expertas."
+                },
+                flexible: {
+                    title: "Flexibilidad",
+                    description: "Horarios flexibles para su conveniencia."
+                }
+            }
+        },
         map: {
             title: "Nuestra Área de Servicio",
             subtitle: "Llegamos donde tú estés.",

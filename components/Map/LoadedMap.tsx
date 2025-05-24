@@ -3,7 +3,15 @@
 import { useMemo } from 'react';
 import dynamic from 'next/dynamic';
 
-export default function LoadedMap() {
+interface LoadedMapProps {
+  center?: {
+    lat: number;
+    lng: number;
+  };
+  lockDrag?: boolean;
+  showServiceArea?: boolean;
+}
+export default function LoadedMap({ center, lockDrag, showServiceArea }: LoadedMapProps) {
   const Map = useMemo(() => dynamic(
     () => import('@/components/Map/Map'),
     {
@@ -13,6 +21,6 @@ export default function LoadedMap() {
   ), []);
 
   return (
-    <Map />
+    <Map center={center} lockDrag={lockDrag} showServiceArea={showServiceArea} />
   );
 }
