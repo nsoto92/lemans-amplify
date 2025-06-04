@@ -117,16 +117,11 @@ function ResponsiveAppBar() {
                   onClose={handleCloseNavMenu}
                   sx={{ display: { xs: 'block', md: 'none' } }}
                 >
-                  {/* {pages.map((page) => (
+                  {pages.map((page) => (
                   <MenuItem key={page.name} onClick={() => handleNavigation(page.href)}>
                     <Typography textAlign="center">{page.name}</Typography>
                   </MenuItem>
-                ))} */}
-                  <MenuItem>
-                    <Button variant="contained" fullWidth href="/services">
-                      {locale.appBar.pages.services.name}
-                    </Button>
-                  </MenuItem>
+                ))}
                 </Menu>
               </Box>
             </Toolbar>
