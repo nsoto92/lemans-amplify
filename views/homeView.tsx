@@ -44,7 +44,7 @@ export default function HomeView() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1 }}
         >
           <Typography variant="h1" gutterBottom sx={{ color: 'white', mb: 2 }}>
             {locale.home.title}

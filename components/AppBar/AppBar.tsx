@@ -56,8 +56,9 @@ function ResponsiveAppBar() {
           <Container maxWidth="xl">
             <Toolbar disableGutters sx={{ justifyContent: 'space-between', py: 1, height: '50px', overflow: 'hidden' }}>
               {/* Logo Section */}
-              <Box sx={{ display: 'flex', alignItems: 'center' }} onClick={() => handleNavigation('/')}>
+              <Box sx={{ display: 'flex', alignItems: 'center' }} >
                 <Image
+                  onClick={() => handleNavigation('/')}
                   src="/logo.png"
                   alt="LeMans Logo"
                   height={150}
@@ -66,13 +67,15 @@ function ResponsiveAppBar() {
                 />
                 <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'left', mx: 5 }}>
                   {pages.map((page) => (
-                    <Button
+                    <Typography
+                      variant="body2"
                       key={page.name}
                       onClick={() => handleNavigation(page.href)}
                       sx={{
                         color: 'text.primary',
                         fontWeight: 500,
                         px: 2,
+                        textDecoration: 'none',
                         py: 1,
                         borderRadius: 2,
                         '&:hover': {
@@ -81,7 +84,7 @@ function ResponsiveAppBar() {
                       }}
                     >
                       {page.name}
-                    </Button>
+                    </Typography>
                   ))}
                 </Box>
               </Box>
