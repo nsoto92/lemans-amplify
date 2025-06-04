@@ -41,12 +41,18 @@ export default {
         description: "En Le Mans Auto Detailing, ofrecemos una amplia gama de servicios diseñados para devolverle a tu auto su mejor apariencia, ¡Sin que tengas que salir de casa!",
         title2: "Servicios disponibles:",
         vehicleSizes: "Vehículo:",
+        price: "en adelante",
+        includes: "Incluye",
+        popular: "Más Popular",
+        bookNow: "Reserva Ahora",
+        details: "Más Detalles",
         list: [
             {
                 id: "1",
                 name: "El Resuelve",
                 price: 40,
                 imageUrl: "/lemans.png",
+                description: "Ideal para el día a día, este servicio rápido incluye lavado interior y exterior, brillo de gomas y limpieza de guardalodos (flushing). Perfecto para mantener tu carro limpio sin complicaciones.",
                 perks: [
                     "Lavado interio/exterior",
                     "Brillo de gomas",
@@ -58,6 +64,7 @@ export default {
                 name: "El Detallado",
                 price: 55,
                 imageUrl: "/lemans.png",
+                description: "Un nivel más allá del básico. Incluye todo lo de El Resuelve, con el añadido de cera líquida para proteger la pintura y dejar un acabado brillante. Tu carro saldrá reluciente y protegido.",
                 perks: [
                     "Lavado interio/exterior",
                     "Brillo de gomas",
@@ -70,6 +77,7 @@ export default {
                 name: "Brilloteo",
                 price: 85,
                 imageUrl: "/lemans.png",
+                description: "Un tratamiento completo que renueva el interior y exterior del vehículo. Incluye hidratación de cueros y plásticos, sellado de silica y un toque de pino para ese olor a carro nuevo. Ideal si buscas una limpieza profunda con acabados premium.",
                 perks: [
                     "Lavado interior profundo",
                     "Lavado exterior",
@@ -87,6 +95,7 @@ export default {
                 name: "Elite Clase A",
                 price: 180,
                 imageUrl: "/lemans.png",
+                description: "Nuestra experiencia más completa y exclusiva. Combinamos limpieza profunda, descontaminación química y manual, lavado de motor y remoción de brea. El servicio perfecto para devolverle a tu vehículo su apariencia de fábrica.",
                 perks: [
                     "Lavado interior profundo",
                     "Lavado exterior",

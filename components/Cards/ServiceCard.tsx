@@ -1,30 +1,38 @@
-// components/ServiceCard.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Card,
   CardMedia,
   CardContent,
   CardActions,
+  Collapse,
   Typography,
   Button,
   Box,
   Chip,
-  Divider
+  Divider,
+  IconButton
 } from '@mui/material';
-import { Star, CheckCircle } from '@mui/icons-material';
-
+import { CheckCircle, ExpandLess, ExpandMore } from '@mui/icons-material';
+import locale from '@/locales/es';
 export interface ServiceCardProps {
   id: string;
   name: string;
   perks: string[];
   price: number;
   imageUrl?: string;
+  description: string;
 }
 
 export default function ServiceCard({ service, onBookNow }: {
   service: ServiceCardProps,
-  onBookNow: (service: ServiceCardProps) => void 
+  onBookNow: (service: ServiceCardProps) => void
 }) {
+  const [expanded, setExpanded] = useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
   return (
     <Card
       sx={{
@@ -39,7 +47,7 @@ export default function ServiceCard({ service, onBookNow }: {
       {/* Popular Badge */}
       {service.id === '1' && (
         <Chip
-          label="Most Popular"
+          label={locale.services.popular}
           color="secondary"
           sx={{
             position: 'absolute',
@@ -67,32 +75,49 @@ export default function ServiceCard({ service, onBookNow }: {
         <Typography variant="h4" gutterBottom sx={{ fontWeight: 600 }}>
           {service.name}
         </Typography>
-        
         <Box sx={{ mb: 3 }}>
-          <Typography variant="h3" color="primary" sx={{ fontWeight: 700 }}>
+          <Typography variant="h4" color="primary" sx={{ fontWeight: 700 }} gutterBottom>
             ${service.price}
             <Typography component="span" variant="body2" color="text.secondary">
-              /starting
+              {` ${locale.services.price}`}
             </Typography>
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {service.description}
           </Typography>
         </Box>
 
-        <Divider sx={{ mb: 2 }} />
-
-        <Typography variant="subtitle2" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
-          What's Included:
-        </Typography>
-        
-        <Box sx={{ mb: 3 }}>
-          {service.perks.map((perk, idx) => (
-            <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-              <CheckCircle sx={{ color: 'secondary.main', fontSize: 18, mr: 1 }} />
-              <Typography variant="body2" color="text.secondary">
-                {perk}
-              </Typography>
-            </Box>
-          ))}
+        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+          <Typography component="span" variant="body1" color="text.secondary">
+            {` ${locale.services.details}`}
+          </Typography>
+          {expanded ? (
+            <IconButton size="medium" onClick={handleExpandClick}>
+              <ExpandLess fontSize="inherit" sx={{ color: 'primary.main' }} />
+            </IconButton>
+          ) : (
+            <IconButton size="medium" onClick={handleExpandClick}>
+              <ExpandMore fontSize="inherit" sx={{ color: 'primary.main' }} />
+            </IconButton>
+          )}
         </Box>
+        <Collapse in={expanded} timeout="auto" unmountOnExit>
+          <Divider sx={{ mt: 1, mb: 2 }} />
+          <Typography variant="subtitle2" gutterBottom sx={{ fontWeight: 600, mb: 2 }}>
+            {`${locale.services.includes}:`}
+          </Typography>
+
+          <Box sx={{ mb: 3 }}>
+            {service.perks.map((perk, idx) => (
+              <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                <CheckCircle sx={{ color: 'secondary.main', fontSize: 18, mr: 1 }} />
+                <Typography variant="body2" color="text.secondary">
+                  {perk}
+                </Typography>
+              </Box>
+            ))}
+          </Box>
+        </Collapse>
       </CardContent>
 
       <CardActions sx={{ p: 3, pt: 0 }}>
@@ -106,7 +131,7 @@ export default function ServiceCard({ service, onBookNow }: {
             fontSize: '1.1rem',
           }}
         >
-          Book Now
+          {locale.services.bookNow}
         </Button>
       </CardActions>
     </Card>

@@ -44,7 +44,7 @@ export default function ServiceForm({ service, onClose }: {
       <Box sx={{ 
         background: 'linear-gradient(135deg, #1a1a1a 0%, #333333 100%)',
         color: 'white',
-        p: 3,
+        p: [2, 3],
         position: 'relative'
       }}>
         <IconButton

@@ -17,9 +17,9 @@ import { Phone } from '@mui/icons-material';
 import Image from 'next/image';
 import locale from '@/locales/es';
 
-// const pages = [
-//   { name: locale.appBar.pages.services.name, href: locale.appBar.pages.services.href },
-// ];
+const pages = [
+  { name: locale.appBar.pages.services.name, href: locale.appBar.pages.services.href },
+];
 
 function ResponsiveAppBar() {
   const router = useRouter();
@@ -42,9 +42,9 @@ function ResponsiveAppBar() {
 
   return (
     !isLoginPage && (
-      <AppBar 
-        position="static" 
-        sx={{ 
+      <AppBar
+        position="static"
+        sx={{
           backgroundColor: 'white',
           boxShadow: '0 2px 20px rgba(0,0,0,0.1)',
           borderBottom: '1px solid rgba(0,0,0,0.05)'
@@ -76,29 +76,30 @@ function ResponsiveAppBar() {
               >
                 LeMans
               </Typography>
+              <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'left', mx: 5 }}>
+                {pages.map((page) => (
+                  <Button
+                    key={page.name}
+                    onClick={() => handleNavigation(page.href)}
+                    sx={{
+                      color: 'text.primary',
+                      fontWeight: 500,
+                      px: 2,
+                      py: 1,
+                      borderRadius: 2,
+                      '&:hover': {
+                        backgroundColor: 'grey.100'
+                      }
+                    }}
+                  >
+                    {page.name}
+                  </Button>
+                ))}
+              </Box>
             </Box>
 
             {/* Desktop Pages Navigation */}
-            {/* <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 1 }}>
-              {pages.map((page) => (
-                <Button
-                  key={page.name}
-                  onClick={() => handleNavigation(page.href)}
-                  sx={{
-                    color: 'text.primary',
-                    fontWeight: 500,
-                    px: 2,
-                    py: 1,
-                    borderRadius: 2,
-                    '&:hover': {
-                      backgroundColor: 'grey.100'
-                    }
-                  }}
-                >
-                  {page.name}
-                </Button>
-              ))}
-            </Box> */}
+
 
             {/* CTA Section */}
             <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center', gap: 2 }}>
@@ -108,20 +109,6 @@ function ResponsiveAppBar() {
                   (000) 000-0000
                 </Typography>
               </Box>
-              <Button
-                variant="contained"
-                href="/services"
-                sx={{
-                  px: 3,
-                  background: 'linear-gradient(135deg, #FFD700 0%, #B8860B 100%)',
-                  color: 'black',
-                  '&:hover': {
-                    background: 'linear-gradient(135deg, #B8860B 0%, #FFD700 100%)',
-                  }
-                }}
-              >
-                {locale.appBar.pages.services.name}
-              </Button>
             </Box>
 
             {/* Mobile Menu */}
