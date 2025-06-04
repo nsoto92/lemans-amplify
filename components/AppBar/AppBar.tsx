@@ -17,7 +17,7 @@ import { Phone } from '@mui/icons-material';
 import Image from 'next/image';
 import locale from '@/locales/es';
 import theme from '@/styles/theme';
-import { hexToRgb, ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 
 const pages = [
   { name: locale.appBar.pages.services.name, href: locale.appBar.pages.services.href },

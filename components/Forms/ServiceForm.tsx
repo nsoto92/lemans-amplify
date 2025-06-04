@@ -1,9 +1,10 @@
 import { Box, Typography, TextField, Button, Divider, IconButton, Grid, ButtonGroup } from '@mui/material';
-import { Close, Star, Schedule, LocationOn } from '@mui/icons-material';
+import { Close } from '@mui/icons-material';
 import { useState } from 'react';
+import { ServiceCardProps } from '../Cards/ServiceCard';
 
 export default function ServiceForm({ service, onClose }: {
-  service: any,
+  service?: ServiceCardProps,
   onClose: () => void
 }) {
   const [formData, setFormData] = useState({

@@ -1,7 +1,6 @@
 'use client';
 
 import 'leaflet/dist/leaflet.css';
-import { useEffect } from 'react';
 import { Circle, MapContainer, TileLayer, useMapEvent } from 'react-leaflet';
 
 interface MapProps {
@@ -20,7 +19,7 @@ const defaultCenter = {
 };
 
 function DisableDrag() {
-  const map = useMapEvent('drag', (e) => {
+  const map = useMapEvent('drag', () => {
     map.dragging.disable();
   });
 

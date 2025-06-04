@@ -4,7 +4,6 @@ import {
   CardMedia,
   CardContent,
   CardActions,
-  Collapse,
   Typography,
   Button,
   Box,
@@ -12,7 +11,7 @@ import {
   Divider,
   IconButton
 } from '@mui/material';
-import { CheckCircle, ExpandLess, ExpandMore } from '@mui/icons-material';
+import { CheckCircle, ExpandMore } from '@mui/icons-material';
 import { motion, AnimatePresence } from 'framer-motion';
 import locale from '@/locales/es';
 
@@ -99,7 +98,7 @@ const perkVariants = {
   }
 };
 
-export default function ServiceCard({ service, onBookNow, index }: {
+export default function ServiceCard({ service, onBookNow }: {
   service: ServiceCardProps,
   onBookNow: (service: ServiceCardProps) => void,
   index?: number

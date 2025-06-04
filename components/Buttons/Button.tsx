@@ -30,7 +30,7 @@ const backgroundVariant = {
   },
 };
 
-export default function Button({ children, ...props }: ButtonProps) {
+export default function Button({ children }: ButtonProps) {
   return (
     <motion.button
       initial="initial"

@@ -9,7 +9,7 @@ import { motion } from 'framer-motion';
 
 import styles from "./home.module.css";
 import locale from "@/locales/es";
-import ServiceCard from '@/components/Cards/ServiceCard';
+import ServiceCard, { ServiceCardProps } from '@/components/Cards/ServiceCard';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -47,16 +47,16 @@ const cardsContainerVariants = {
 
 export default function ServiceView() {
   const [open, setOpen] = useState(false);
-  const [selectedService, setSelectedService] = useState(null);
+  const [selectedService, setSelectedService] = useState<ServiceCardProps | undefined>(undefined);
 
-  const handleOpen = (service: any) => {
+  const handleOpen = (service: ServiceCardProps) => {
     setSelectedService(service);
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
-    setSelectedService(null);
+    setSelectedService(undefined);
   };
 
   return (
