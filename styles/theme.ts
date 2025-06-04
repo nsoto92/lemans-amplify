@@ -8,9 +8,9 @@ const theme = createTheme({
       dark: '#000000',
     },
     secondary: {
-      main: '#FFD700', // Gold accent
-      light: '#FFED4E',
-      dark: '#B8860B',
+      main: '#DC2626', // Strong red
+      light: '#EF4444',
+      dark: '#991B1B',
     },
     background: {
       default: '#fafafa',

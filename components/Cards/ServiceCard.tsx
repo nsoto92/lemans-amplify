@@ -87,7 +87,7 @@ export default function ServiceCard({ service, onBookNow }: {
           </Typography>
         </Box>
 
-        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Box onClick={handleExpandClick} sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
           <Typography component="span" variant="body1" color="text.secondary">
             {` ${locale.services.details}`}
           </Typography>

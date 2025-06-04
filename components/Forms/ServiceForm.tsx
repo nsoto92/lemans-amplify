@@ -1,4 +1,4 @@
-import { Box, Typography, TextField, Button, Divider, IconButton, Grid } from '@mui/material';
+import { Box, Typography, TextField, Button, Divider, IconButton, Grid, ButtonGroup } from '@mui/material';
 import { Close, Star, Schedule, LocationOn } from '@mui/icons-material';
 import { useState } from 'react';
 
@@ -35,7 +35,7 @@ export default function ServiceForm({ service, onClose }: {
         width: { xs: '95%', sm: '90%', md: '600px' },
         maxHeight: '90vh',
         bgcolor: 'background.paper',
-        borderRadius: 3,
+        borderRadius: 2,
         boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
         overflow: 'hidden',
       }}
@@ -68,7 +68,7 @@ export default function ServiceForm({ service, onClose }: {
       </Box>
 
       {/* Form Content */}
-      <Box sx={{ p: 3, maxHeight: '60vh', overflow: 'auto' }}>
+      <Box sx={{ p: 3, mb: 5, maxHeight: '60vh', overflow: 'auto' }}>
         <form onSubmit={handleSubmit}>
           <Grid container spacing={3}>
             <Grid size={12}>
@@ -149,7 +149,7 @@ export default function ServiceForm({ service, onClose }: {
           <Divider sx={{ my: 3 }} />
 
           {/* Service Summary */}
-          <Box sx={{ mb: 3, p: 2, bgcolor: 'grey.50', borderRadius: 2 }}>
+          <Box sx={{mb: 3, p: 2, bgcolor: 'grey.50', borderRadius: 2 }}>
             <Typography variant="h6" gutterBottom>
               Service Summary
             </Typography>
@@ -159,25 +159,24 @@ export default function ServiceForm({ service, onClose }: {
               </Typography>
             ))}
           </Box>
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            size="large"
-            sx={{ py: 2, fontSize: '1.1rem', mb: 2 }}
+          <ButtonGroup orientation="vertical" fullWidth>
+            <Button
+              type="submit"
+              variant="contained"
+              size="medium"
+              sx={{ fontSize: '1.1rem', mb: 1 }}
           >
             Confirm Booking
           </Button>
           
           <Button
-            fullWidth
             variant="outlined"
             onClick={onClose}
-            sx={{ py: 1.5 }}
+            size="medium"
           >
-            Cancel
-          </Button>
+              Cancel
+            </Button>
+          </ButtonGroup>
         </form>
       </Box>
     </Box>

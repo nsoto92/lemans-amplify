@@ -2,12 +2,10 @@
 
 import PageView from "@/views/pageView";
 import { Box, Button, Typography, Container, Grid, Card, CardContent } from '@mui/material';
-import Image from "next/image";
 import { motion } from 'framer-motion';
-import styles from "./home.module.css";
 import locale from "@/locales/es";
 import LoadedMap from "@/components/Map/LoadedMap";
-import { CheckCircle, Schedule, Home } from '@mui/icons-material';
+import { CheckCircleOutlineOutlined, Schedule, Home } from '@mui/icons-material';
 
 const features = [
   {
@@ -16,7 +14,7 @@ const features = [
     description: locale.home.services.cards.home.description
   },
   {
-    icon: <CheckCircle sx={{ fontSize: 40, color: 'secondary.main' }} />,
+    icon: <CheckCircleOutlineOutlined sx={{ fontSize: 40, color: 'secondary.main' }} />,
     title: locale.home.services.cards.premium.title,
     description: locale.home.services.cards.premium.description
   },
@@ -59,13 +57,12 @@ export default function HomeView() {
             href="/services"
             variant="contained"
             sx={{
-              background: 'linear-gradient(135deg, #FFD700 0%, #B8860B 100%)',
-              color: 'black',
+              background: 'linear-gradient(135deg, #DC2626 0%, #991B1B 100%)',
+              color: 'white',
               px: 4,
               py: 2,
-              fontSize: '1.2rem',
               '&:hover': {
-                background: 'linear-gradient(135deg, #B8860B 0%, #FFD700 100%)',
+                background: 'linear-gradient(135deg, #991B1B 0%, #DC2626 100%)',
               }
             }}
             >
